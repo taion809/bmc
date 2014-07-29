@@ -5,8 +5,13 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-
+  # Already have a vagrant box you want to use?  
+  # Change it here
   config.vm.box = "trusty64"
+
+  # Want a trusty64 basebox?  Uncomment the following line.
+  # config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+  
   config.vm.network "forwarded_port", guest: 11300, host: 11301
   config.vm.network "private_network", ip: "192.168.63.10"
 
