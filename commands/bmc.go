@@ -12,14 +12,15 @@ var hostname, port, protocol string
 
 func AddCommands() {
     initCommand.AddCommand(debugCmd)
-    initCommand.AddCommand(listTubesCmd)
     initCommand.AddCommand(buryCommand)
     initCommand.AddCommand(deleteCommand)
+    initCommand.AddCommand(listTubesCmd)
     initCommand.AddCommand(peekCommand)
     initCommand.AddCommand(connStatsCommand)
     initCommand.AddCommand(jobStatsCommand)
     initCommand.AddCommand(touchCommand)
     initCommand.AddCommand(tubeCommand)
+    tubeCommand.AddCommand(tubePutCommand)
     tubeCommand.AddCommand(tubeStatsCommand)
     tubeCommand.AddCommand(tubePeekReadyCommand)
     tubeCommand.AddCommand(tubePeekBuriedCommand)
