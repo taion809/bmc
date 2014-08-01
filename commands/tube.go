@@ -4,8 +4,6 @@ import (
     "github.com/spf13/cobra"
 )
 
-var tube_name string
-
 // This is meant to be used as an anchor for other tube based subcommands
 var tubeCommand = &cobra.Command{
     Use:   "tube",

@@ -8,7 +8,16 @@ import (
 
 var initCommand = &cobra.Command{Use: "bmc"}
 
-var hostname, port, protocol string
+var (
+    ttr       int64
+    delay     int64
+    pri       uint32
+    filename  string
+    tube_name string
+    hostname  string
+    port      string
+    protocol  string
+)
 
 func AddCommands() {
     initCommand.AddCommand(debugCmd)
@@ -19,6 +28,7 @@ func AddCommands() {
     initCommand.AddCommand(connStatsCommand)
     initCommand.AddCommand(jobStatsCommand)
     initCommand.AddCommand(touchCommand)
+    initCommand.AddCommand(releaseCommand)
     initCommand.AddCommand(tubeCommand)
     tubeCommand.AddCommand(tubePutCommand)
     tubeCommand.AddCommand(tubeStatsCommand)
@@ -26,6 +36,7 @@ func AddCommands() {
     tubeCommand.AddCommand(tubePeekBuriedCommand)
     tubeCommand.AddCommand(tubePeekDelayedCommand)
     tubeCommand.AddCommand(tubeKickCommand)
+    tubeCommand.AddCommand(tubePauseCommand)
 }
 
 func Execute() {

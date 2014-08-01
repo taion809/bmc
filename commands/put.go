@@ -9,13 +9,6 @@ import (
     "time"
 )
 
-var (
-    ttr      int64
-    delay    int64
-    pri      uint32
-    filename string
-)
-
 var tubePutCommand = &cobra.Command{
     Use:   "put",
     Short: "put",
@@ -56,7 +49,7 @@ func tube_put(cmd *cobra.Command, args []string) {
 
     delayDuration := time.Duration(delay) * time.Second
     ttrDuration := time.Duration(ttr) * time.Second
-    id, err := client.Put(body, pri, delayDuration, ttrDuration)
+    id, err := client.Tube.Put(body, pri, delayDuration, ttrDuration)
     if err != nil {
         log.Fatal(err)
     }
