@@ -18,11 +18,7 @@ func init() {
 }
 
 func tube_peek_delayed(cmd *cobra.Command, args []string) {
-    client, err := beanstalk.Dial(protocol, hostname+":"+port)
-    if err != nil {
-        log.Fatal(err)
-    }
-
+    client := connect()
     defer client.Close()
 
     client.Tube = beanstalk.Tube{client, tube_name}

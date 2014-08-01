@@ -2,7 +2,6 @@ package commands
 
 import (
     "fmt"
-    "github.com/kr/beanstalk"
     "github.com/spf13/cobra"
     "log"
 )
@@ -18,11 +17,7 @@ func init() {
 }
 
 func list_tubes(cmd *cobra.Command, args []string) {
-    client, err := beanstalk.Dial(protocol, hostname+":"+port)
-    if err != nil {
-        log.Fatal(err)
-    }
-
+    client := connect()
     defer client.Close()
 
     tubes, err := client.ListTubes()

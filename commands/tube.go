@@ -9,7 +9,7 @@ var tube_name string
 // This is meant to be used as an anchor for other tube based subcommands
 var tubeCommand = &cobra.Command{
     Use:   "tube",
-    Short: "Tube based commands",
+    Short: "Tube based subcommands",
     Long:  `Enjoy working with the beanstalkd tubes, this command has it all!`,
     Run: func(cmd *cobra.Command, args []string) {
         cmd.Help()

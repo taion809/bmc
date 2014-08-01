@@ -17,16 +17,11 @@ func init() {
 }
 
 func add(cmd *cobra.Command, args []string) {
-    //conf := InitializeConfig()
-
-    client, err := beanstalk.Dial(protocol, hostname+":"+port)
-    if err != nil {
-        log.Fatal(err)
-    }
-
+    client := connect()
     defer client.Close()
 
-    id, err := client.Put([]byte("hello"), 1, 0, 120*time.Second)
+    client.Tube = beanstalk.Tube{client, tube_name}
+    id, err := client.Put([]byte("hello"), 1, 0, 3800*time.Second)
     if err != nil {
         log.Fatal(err)
     }
