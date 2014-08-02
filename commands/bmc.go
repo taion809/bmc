@@ -20,7 +20,6 @@ var (
 )
 
 func AddCommands() {
-    initCommand.AddCommand(debugCmd)
     initCommand.AddCommand(buryCommand)
     initCommand.AddCommand(deleteCommand)
     initCommand.AddCommand(listTubesCmd)
