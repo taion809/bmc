@@ -44,7 +44,7 @@ func Execute() {
 }
 
 func init() {
-    initCommand.PersistentFlags().StringVarP(&hostname, "hostname", "h", "localhost", "beanstalkd hostname or IPv4 address")
+    initCommand.PersistentFlags().StringVarP(&hostname, "hostname", "l", "localhost", "beanstalkd hostname or IPv4 address")
     initCommand.PersistentFlags().StringVar(&protocol, "protocol", "tcp", "transport protocol")
     initCommand.PersistentFlags().StringVarP(&port, "port", "p", "11301", "listening port")
 }
