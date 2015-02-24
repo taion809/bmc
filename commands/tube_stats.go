@@ -1,34 +1,34 @@
 package commands
 
 import (
-    "fmt"
-    "github.com/kr/beanstalk"
-    "github.com/spf13/cobra"
-    "log"
+	"fmt"
+	"github.com/kr/beanstalk"
+	"github.com/spf13/cobra"
+	"log"
 )
 
 var tubeStatsCommand = &cobra.Command{
-    Use:   "stats [tube_name]",
-    Short: "Retrieve statistics about the given tube",
-    Long:  `Refreshing statistics about your favorite tube!`,
+	Use:   "stats [tube_name]",
+	Short: "Retrieve statistics about the given tube",
+	Long:  `Refreshing statistics about your favorite tube!`,
 }
 
 func init() {
-    tubeStatsCommand.Run = tube_stats
+	tubeStatsCommand.Run = tube_stats
 }
 
 func tube_stats(cmd *cobra.Command, args []string) {
-    client := connect()
-    defer client.Close()
+	client := connect()
+	defer client.Close()
 
-    client.Tube = beanstalk.Tube{client, tube_name}
+	client.Tube = beanstalk.Tube{client, tube_name}
 
-    stats, err := client.Tube.Stats()
-    if err != nil {
-        log.Fatal(err)
-    }
+	stats, err := client.Tube.Stats()
+	if err != nil {
+		log.Fatal(err)
+	}
 
-    for k, v := range stats {
-        fmt.Printf("%s : %s\n", k, v)
-    }
+	for k, v := range stats {
+		fmt.Printf("%s : %s\n", k, v)
+	}
 }
